@@ -9,9 +9,6 @@ import java.util.Scanner;
  */
 
 public class Main {
-    static final String DB_CONNECTION = "jdbc:mysql://localhost:3306/testdbforclient";
-    static final String DB_USER = "root";
-    static final String DB_PASSWORD = "root";
 
     static Connection connection;
 
@@ -20,8 +17,8 @@ public class Main {
         try {
             try {
                 // create connection
-                connection = DriverManager.getConnection(DB_CONNECTION, DB_USER, DB_PASSWORD);
-                initDB();
+                DatabaseUtil dbUtil = new DatabaseUtil();
+                connection = dbUtil.getConnection();
 
                 while (true) {
                     System.out.println("1: add client");
@@ -59,16 +56,6 @@ public class Main {
         } catch (SQLException ex) {
             ex.printStackTrace();
             return;
-        }
-    }
-
-    private static void initDB() throws SQLException {
-        Statement st = connection.createStatement();
-        try {
-            st.execute("DROP TABLE IF EXISTS Clients");
-            st.execute("CREATE TABLE Clients (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, name VARCHAR(20) NOT NULL, age INT)");
-        } finally {
-            st.close();
         }
     }
 

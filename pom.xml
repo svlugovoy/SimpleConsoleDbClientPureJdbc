@@ -8,13 +8,19 @@
     <artifactId>consDbClJdbc</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+<properties>
+
+    <!--DB-->
+    <postgresql.version>9.4.1208</postgresql.version>
+
+</properties>
 
 
     <dependencies>
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.35</version>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
         </dependency>
     </dependencies>
 
@@ -24,8 +30,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
         </plugins>
